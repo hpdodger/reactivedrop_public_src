@@ -2115,3 +2115,38 @@ CON_COMMAND_F( asw_spectate_npc, "spectate targeted NPC", FCVAR_CHEAT )
 	pPlayer->LeaveMarines();
 	pPlayer->SetSpectatingNPC( assert_cast< CASW_Inhabitable_NPC * >( pTarget ) );
 }
+
+
+void rd_PingToolEnablef() {	
+	CASW_Player* pPlayer = ToASW_Player(UTIL_GetCommandClient());
+	if (!pPlayer)
+		return;
+
+	CASW_Marine* mymarine = CASW_Marine::AsMarine(pPlayer->GetNPC());
+	if (!mymarine)
+	{
+		Msg("No marine found \n");
+		return;
+	}
+
+	mymarine->SetPingTool(false);
+
+}
+ConCommand PingToolEnable( "+rd_ping_tool", rd_PingToolEnablef, "Enables ping tool", 0 );
+
+void rd_PingToolDisablef() {	
+	CASW_Player* pPlayer = ToASW_Player(UTIL_GetCommandClient());
+	if (!pPlayer)
+		return;	
+
+	CASW_Marine* mymarine = CASW_Marine::AsMarine(pPlayer->GetNPC());
+	if (!mymarine)
+	{
+		Msg("No marine found \n");
+		return;
+	}
+
+	mymarine->SetPingTool(false);
+}
+
+ConCommand PingToolDisable( "-rd_ping_tool", rd_PingToolDisablef, "Disables ping tool", 0 );

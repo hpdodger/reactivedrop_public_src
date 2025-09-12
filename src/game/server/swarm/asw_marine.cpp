@@ -272,6 +272,9 @@ IMPLEMENT_SERVERCLASS_ST(CASW_Marine, DT_ASW_Marine)
 	SendPropBool	( SENDINFO( m_bRolls ) ),
 	SendPropInt		( SENDINFO( m_nMarineProfile ) ),
 	SendPropBool	( SENDINFO( m_bNightVision ) ),
+
+	SendPropBool(SENDINFO(m_bPingTool)),
+
 	SendPropInt		( SENDINFO( m_SpecialAbility ), NumBitsForCount( NUM_SPECIAL_ABILITIES ), SPROP_UNSIGNED ),
 END_SEND_TABLE()
 
@@ -685,6 +688,8 @@ CASW_Marine::CASW_Marine() : m_RecentMeleeHits( 16, 16 )
 
 	m_bSpawnZombineOnDeath = false;
 	m_bNightVision = false;
+
+	m_bPingTool = false;
 }
 
 

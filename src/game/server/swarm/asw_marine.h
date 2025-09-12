@@ -279,6 +279,12 @@ public:
 	void SetNightVision( bool bNightVision ) { m_bNightVision = bNightVision; }
 	CNetworkVar( bool, m_bNightVision );
 
+
+	//ping-tool
+	void SetPingTool(bool bPingTool) { m_bPingTool = bPingTool; }
+	CNetworkVar(bool, m_bPingTool);
+	//
+
 	void AddElectrifiedArmor( float flDuration, CASW_Weapon *pArmor )
 	{
 		m_flElectrifiedArmorEndTime = MAX( GetElectrifiedArmorEndTime(), gpGlobals->curtime + flDuration );

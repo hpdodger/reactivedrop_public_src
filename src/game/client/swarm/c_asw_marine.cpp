@@ -202,6 +202,10 @@ BEGIN_NETWORK_TABLE( CASW_Marine, DT_ASW_Marine )
 	RecvPropInt		( RECVINFO( m_nMarineProfile ) ),
 	RecvPropBool	( RECVINFO( m_bNightVision ) ),
 	RecvPropInt		( RECVINFO( m_SpecialAbility ) ),
+
+	//ping-tool
+	RecvPropBool(RECVINFO(m_bPingTool)),
+	
 END_RECV_TABLE()
 
 BEGIN_PREDICTION_DATA( C_ASW_Marine )
@@ -474,6 +478,9 @@ C_ASW_Marine::C_ASW_Marine() :
 
 	extern ConVar asw_marine_rolls;
 	m_bRolls = asw_marine_rolls.GetBool();
+
+	//ping-tool
+	m_bOldPingTool = false;
 }
 
 
@@ -1070,6 +1077,12 @@ void C_ASW_Marine::OnDataChanged( DataUpdateType_t updateType )
 		// We want to think every frame.
 		SetNextClientThink( CLIENT_THINK_ALWAYS );
 		return;
+	}
+
+	//ping-tool
+	if (m_bOldPingToll != m_bPingTool) {
+		m_bOldPingToll = m_bPingTool;
+		// draw line and effect
 	}
 
 	if ( m_bClientSideRagdoll && m_pClientsideRagdoll )

@@ -196,6 +196,9 @@ public:
 	float m_flFlashAlpha;
 	bool m_bOldVisionActive;
 
+	//ping-tool
+	CNetworkVar(bool, m_bPingTool);
+
 	// hacking
 	bool m_bHacking;
 	CNetworkHandle( C_ASW_Hack, m_hCurrentHack );
